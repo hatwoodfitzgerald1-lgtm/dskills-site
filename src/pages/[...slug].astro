@@ -1,0 +1,9 @@
+---
+export const prerender = true;
+import { pages } from '../content/pages.mjs';
+export function getStaticPaths() {
+  return pages.map((p) => ({ params: { slug: p.slug }, props: { html: p.html } }));
+}
+const { html } = Astro.props;
+---
+<Fragment set:html={html} />

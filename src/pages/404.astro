@@ -1,0 +1,32 @@
+---
+// Self-contained, on-brand 404 route. Brace-free so Astro compiles it verbatim.
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Not found · d'Skills</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <main class="main">
+      <section class="hero" style="min-height:82vh">
+        <div class="hero-fallback"></div>
+        <div class="wrap">
+          <div class="hero-inner">
+            <p class="eyebrow">404 //</p>
+            <h1 style="font-size:clamp(2rem,1.4rem + 3vw,3.6rem)">This page didn't ship.</h1>
+            <p class="sub">The link you followed points to something that isn't here, but the catalog still is. Head back and pick a project.</p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="/courses/">Browse Courses</a>
+              <a class="btn btn-ghost" href="/">Return home</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

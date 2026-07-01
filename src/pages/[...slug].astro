@@ -1,9 +1,18 @@
 ---
-export const prerender = true;
+// Server-rendered catch-all. The worker answers every path directly, with no
+// static directory index, so Webflow Cloud's trailing-slash handling cannot form
+// a redirect loop on subpages.
 import { pages } from '../content/pages.mjs';
-export function getStaticPaths() {
-  return pages.map((p) => ({ params: { slug: p.slug }, props: { html: p.html } }));
+const raw = (Astro.params.slug ?? '');
+const slug = raw.replace(/\/+$/, '');
+const page = pages.find((p) => (p.slug ?? '') === slug);
+if (!page) {
+  const home = pages.find((p) => (p.slug ?? '') === '');
+  return new Response(home ? home.html : 'Not found', {
+    status: 404,
+    headers: { 'content-type': 'text/html; charset=utf-8' },
+  });
 }
-const { html } = Astro.props;
+const html = page.html;
 ---
 <Fragment set:html={html} />
